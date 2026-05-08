@@ -1,0 +1,21 @@
+sip:
+  bridgeRequest:
+    name: default-sip-bridge
+    inbound_addresses:
+      - 0.0.0.0/0
+    outbound_address: 0.0.0.0
+    outbound_number: 4512345678
+    inbound_numbers_regex: ""
+    inbound_username: ""
+    inbound_password: ""
+    inbound_password_file: ""
+    outbound_username: ""
+    outbound_password: ""
+    outbound_password_file: ""
+
+  sipDispatchRule:
+    rule:
+      dispatchRuleDirect:
+        roomName: "test-room"
+    trunk_ids: []
+    hide_phone_number: False
