@@ -13,7 +13,6 @@ in rec {
     machine = let
       lcOpts = lib.concatStringsSep " " [
         "--run-once"
-        "--config" ./../config.yaml
         "--log-level" "debug"
         "--server-url" "http://127.0.0.1:${toString nodes.machine.services.livekit.settings.port}"
         "--api-key" "devkey"
@@ -39,7 +38,7 @@ in rec {
           port = 6888;
         };
         settings = {
-          log_level = "debug";
+          log_level = "DEBUG";
           keys = {
             "devkey" = "N0inqPzWzHgrMCQuIJ1fiDZW6U6fzo1BGfF9HtKUfIqB";
           };
@@ -92,6 +91,15 @@ in rec {
       machine.wait_until_succeeds("netstat -anp | grep LISTEN | grep -qF 7880")
       #machine.wait_until_succeeds("netstat -anp | grep LISTEN | grep -qF 5060")
       print(machine.succeed("netstat -anp | grep LISTEN"))
-      machine.succeed("livekit-conf")
+
+    with subtest("should be able to correctly perform initial creation"):
+      machine.succeed("livekit-conf --config ${./conf/initial.yaml}")
+      print(machine.succeed("journalctl -u livekit"))
+      machine.succeed("livekit-conf --config ${./conf/initial.yaml} --mode assert")
+
+    with subtest("should be able to correctly update existing"):
+      machine.succeed("livekit-conf --config ${./conf/update.yaml}")
+      print(machine.succeed("journalctl -u livekit"))
+      machine.succeed("livekit-conf --config ${./conf/update.yaml} --mode assert")
   '';
 }

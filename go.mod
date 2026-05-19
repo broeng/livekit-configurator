@@ -9,7 +9,10 @@ require (
 	sigs.k8s.io/yaml v1.6.0
 )
 
-require github.com/livekit/protocol v1.45.5-0.20260423163244-347de5a2ef78
+require (
+	github.com/livekit/protocol v1.45.5-0.20260423163244-347de5a2ef78
+	google.golang.org/protobuf v1.36.11
+)
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-20260209202127-80ab13bee0bf.1 // indirect
@@ -85,7 +88,6 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20260319201613-d00831a3d3e7 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260319201613-d00831a3d3e7 // indirect
 	google.golang.org/grpc v1.79.3 // indirect
-	google.golang.org/protobuf v1.36.11 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

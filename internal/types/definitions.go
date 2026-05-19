@@ -1,10 +1,10 @@
 package types
 
 type SIPConfig struct {
-	BridgeRequest   *SIPBridgeRequest `json:"bridgeRequest",omitempty`
-	DispatchRule    *SIPDispatchRule  `json:"dispatchRule",omitempty`
+	Trunks        *SIPTrunks         `json:"trunks",omitempty`
+	DispatchRules []*SIPDispatchRule `json:"dispatchRules",omitempty`
 }
 
 type LiveKitConfigDefinition struct {
-	SIPConfig   *SIPConfig  `json:"sip",omitempty`
+	SIPConfig *SIPConfig `json:"sip",omitempty`
 }

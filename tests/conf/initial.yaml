@@ -19,3 +19,19 @@ sip:
           roomName: "test-room"
       trunk_ids: []
       hide_phone_number: False
+    - name: "dispatch-rule-callee"
+      rule:
+        dispatchRuleCallee:
+          roomPrefix: "test-room"
+      numbers:
+        - 4587654321
+      trunk_ids: []
+      hide_phone_number: False
+    - name: "dispatch-rule-ind"
+      rule:
+        dispatchRuleIndividual:
+          roomPrefix: "test-room"
+      numbers:
+        - 4587654333
+      trunk_ids: []
+      hide_phone_number: False

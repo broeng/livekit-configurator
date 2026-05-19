@@ -27,6 +27,12 @@
 
         devShell = pkgs.mkShell {
           buildInputs = [ pkgs.go_1_26 ];
+          shellHook = ''
+            export LIVEKIT_CONF_SERVER_URL=http://localhost:8080
+            export LIVEKIT_CONF_API_KEY=dummy
+            export LIVEKIT_CONF_API_SECRET=dummy
+            export LIVEKIT_CONF_CONFIG=config.yaml
+          '';
         };
       }
     );

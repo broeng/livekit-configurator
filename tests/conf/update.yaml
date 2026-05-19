@@ -3,14 +3,14 @@ sip:
     inbound:
       - name: default-sip-bridge-inbound
         allowed_addresses:
-          - 0.0.0.0/0
+          - 0.0.0.1/0
         numbers:
-          - 4512345678
+          - 4511111111
     outbound:
       - name: default-sip-bridge-outbound
-        address: 0.0.0.0
+        address: 0.0.0.1
         numbers:
-          - 4512345678
+          - 4522222222
 
   dispatchRules:
     - name: "default-dispatch-rule"
