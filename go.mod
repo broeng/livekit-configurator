@@ -1,6 +1,6 @@
 module github.com/broeng/livekit-configurator
 
-go 1.26.2
+go 1.26
 
 require (
 	github.com/livekit/server-sdk-go/v2 v2.16.3
