@@ -72,7 +72,6 @@ func loadPasswordFiles(def *LiveKitConfigDefinition) error {
 	return nil
 }
 
-
 func validateTrunks(def *LiveKitConfigDefinition) error {
 	if def.SIPConfig == nil || def.SIPConfig.Trunks == nil {
 		return nil

@@ -97,38 +97,38 @@ func MergeSIPOutboundTrunkInfos(base *proto.SIPOutboundTrunkInfo, prio *proto.SI
 
 func makeDispatchRule(desc *types.DispatchRule) *proto.SIPDispatchRule {
 	if desc.DispatchRuleDirect != nil {
-		return &proto.SIPDispatchRule {
-			Rule: &proto.SIPDispatchRule_DispatchRuleDirect {
-				DispatchRuleDirect: &proto.SIPDispatchRuleDirect {
+		return &proto.SIPDispatchRule{
+			Rule: &proto.SIPDispatchRule_DispatchRuleDirect{
+				DispatchRuleDirect: &proto.SIPDispatchRuleDirect{
 					RoomName: desc.DispatchRuleDirect.RoomName,
-					Pin: desc.DispatchRuleDirect.Pin,
+					Pin:      desc.DispatchRuleDirect.Pin,
 				},
 			},
 		}
 	} else if desc.DispatchRuleCallee != nil {
-		return &proto.SIPDispatchRule {
-			Rule: &proto.SIPDispatchRule_DispatchRuleCallee {
-				DispatchRuleCallee: &proto.SIPDispatchRuleCallee {
+		return &proto.SIPDispatchRule{
+			Rule: &proto.SIPDispatchRule_DispatchRuleCallee{
+				DispatchRuleCallee: &proto.SIPDispatchRuleCallee{
 					RoomPrefix: desc.DispatchRuleCallee.RoomPrefix,
-					Pin: desc.DispatchRuleCallee.Pin,
-					Randomize: desc.DispatchRuleCallee.Randomize,
+					Pin:        desc.DispatchRuleCallee.Pin,
+					Randomize:  desc.DispatchRuleCallee.Randomize,
 				},
 			},
 		}
 	} else if desc.DispatchRuleIndividual != nil {
-		return &proto.SIPDispatchRule {
-			Rule: &proto.SIPDispatchRule_DispatchRuleIndividual {
-				DispatchRuleIndividual: &proto.SIPDispatchRuleIndividual {
-					RoomPrefix: desc.DispatchRuleIndividual.RoomPrefix,
-					Pin: desc.DispatchRuleIndividual.Pin,
+		return &proto.SIPDispatchRule{
+			Rule: &proto.SIPDispatchRule_DispatchRuleIndividual{
+				DispatchRuleIndividual: &proto.SIPDispatchRuleIndividual{
+					RoomPrefix:   desc.DispatchRuleIndividual.RoomPrefix,
+					Pin:          desc.DispatchRuleIndividual.Pin,
 					NoRandomness: desc.DispatchRuleIndividual.NoRandomness,
 				},
 			},
 		}
 	} else {
-		return &proto.SIPDispatchRule {
-			Rule: &proto.SIPDispatchRule_DispatchRuleDirect {
-				DispatchRuleDirect: &proto.SIPDispatchRuleDirect {
+		return &proto.SIPDispatchRule{
+			Rule: &proto.SIPDispatchRule_DispatchRuleDirect{
+				DispatchRuleDirect: &proto.SIPDispatchRuleDirect{
 					RoomName: "default",
 				},
 			},
@@ -139,33 +139,33 @@ func makeDispatchRule(desc *types.DispatchRule) *proto.SIPDispatchRule {
 func MakeSIPDispatchRule(desc *types.SIPDispatchRule) *proto.SIPDispatchRuleInfo {
 	emptyMap := map[string]string{}
 	return &proto.SIPDispatchRuleInfo{
-		Name:                desc.Name,
-		Rule:                makeDispatchRule(&desc.Rule),
-		Numbers:             desc.Numbers,
-		HidePhoneNumber:     desc.HidePhoneNumber,
-		InboundNumbers:      desc.InboundNumbers,
-		Attributes:          emptyMap,
+		Name:            desc.Name,
+		Rule:            makeDispatchRule(&desc.Rule),
+		Numbers:         desc.Numbers,
+		HidePhoneNumber: desc.HidePhoneNumber,
+		InboundNumbers:  desc.InboundNumbers,
+		Attributes:      emptyMap,
 		//RoomConfig:        // not needed?
 		//KrispEnabled:        false, // TODO
-		MediaEncryption:     proto.SIPMediaEncryption_SIP_MEDIA_ENCRYPT_ALLOW,
-		CreatedAt:           tspb.Now(),
-		UpdatedAt:           tspb.Now(),
+		MediaEncryption: proto.SIPMediaEncryption_SIP_MEDIA_ENCRYPT_ALLOW,
+		CreatedAt:       tspb.Now(),
+		UpdatedAt:       tspb.Now(),
 	}
 }
 
 func MergeSIPDispatchRules(base *proto.SIPDispatchRuleInfo, prio *proto.SIPDispatchRuleInfo) *proto.SIPDispatchRuleInfo {
 	return &proto.SIPDispatchRuleInfo{
-		SipDispatchRuleId:   base.SipDispatchRuleId,
-		Name:                prio.Name,
-		Rule:                prio.Rule,
-		Numbers:             prio.Numbers,
-		HidePhoneNumber:     prio.HidePhoneNumber,
-		InboundNumbers:      prio.InboundNumbers,
-		Attributes:          prio.Attributes,
-		RoomConfig:          prio.RoomConfig,
-		KrispEnabled:        prio.KrispEnabled,
-		MediaEncryption:     prio.MediaEncryption,
-		CreatedAt:           base.CreatedAt,
-		UpdatedAt:           base.UpdatedAt,
+		SipDispatchRuleId: base.SipDispatchRuleId,
+		Name:              prio.Name,
+		Rule:              prio.Rule,
+		Numbers:           prio.Numbers,
+		HidePhoneNumber:   prio.HidePhoneNumber,
+		InboundNumbers:    prio.InboundNumbers,
+		Attributes:        prio.Attributes,
+		RoomConfig:        prio.RoomConfig,
+		KrispEnabled:      prio.KrispEnabled,
+		MediaEncryption:   prio.MediaEncryption,
+		CreatedAt:         base.CreatedAt,
+		UpdatedAt:         base.UpdatedAt,
 	}
 }

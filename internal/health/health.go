@@ -14,18 +14,18 @@ import (
 )
 
 type HealthController struct {
-	logger logrus.FieldLogger
-	context context.Context
-	client  *livekit.LiveKitClient
+	logger     logrus.FieldLogger
+	context    context.Context
+	client     *livekit.LiveKitClient
 	listenPort int
-	isReady atomic.Bool
+	isReady    atomic.Bool
 }
 
 func New(logger logrus.FieldLogger, context context.Context, client *livekit.LiveKitClient, listenPort int) *HealthController {
-	return &HealthController {
-		logger: logger.WithField("component", "health"),
-		context: context,
-		client: client,
+	return &HealthController{
+		logger:     logger.WithField("component", "health"),
+		context:    context,
+		client:     client,
 		listenPort: listenPort,
 	}
 }
@@ -37,7 +37,7 @@ func (hc *HealthController) Run() {
 
 	// Prepare Server
 	server := &http.Server{
-		Addr: fmt.Sprintf(":%d", hc.listenPort),
+		Addr:    fmt.Sprintf(":%d", hc.listenPort),
 		Handler: nil,
 	}
 
@@ -71,7 +71,7 @@ func (hc *HealthController) livenessHandler(w http.ResponseWriter, r *http.Reque
 	w.Write([]byte("OK"))
 }
 
-func (hc* HealthController) readinessHandler(w http.ResponseWriter, r *http.Request) {
+func (hc *HealthController) readinessHandler(w http.ResponseWriter, r *http.Request) {
 	if hc.isReady.Load() {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("Ready"))
@@ -81,7 +81,7 @@ func (hc* HealthController) readinessHandler(w http.ResponseWriter, r *http.Requ
 	}
 }
 
-func (hc* HealthController) readinessProbe() {
+func (hc *HealthController) readinessProbe() {
 	s := sleep.New(hc.context)
 	for s.IsRunning() {
 		// Probe server endpoint

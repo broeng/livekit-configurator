@@ -51,25 +51,25 @@ type SIPTrunks struct {
 
 type DispatchDirectRule struct {
 	RoomName string `json:"roomName"`
-	Pin string `json:"pin",omitempty`
+	Pin      string `json:"pin",omitempty`
 }
 
 type DispatchIndividualRule struct {
-	RoomPrefix string `json:"roomPrefix",omitempty`
-	Pin string `json:"pin",omitempty`
-	NoRandomness bool `json:"no_randomness",omitempty`
+	RoomPrefix   string `json:"roomPrefix",omitempty`
+	Pin          string `json:"pin",omitempty`
+	NoRandomness bool   `json:"no_randomness",omitempty`
 }
 
 type DispatchCalleeRule struct {
 	RoomPrefix string `json:"roomPrefix",omitempty`
-	Pin string `json:"pin",omitempty`
-	Randomize bool `json:"randomize",omitempty`
+	Pin        string `json:"pin",omitempty`
+	Randomize  bool   `json:"randomize",omitempty`
 }
 
 type DispatchRule struct {
-	DispatchRuleDirect *DispatchDirectRule `json:"dispatchRuleDirect",omitempty`
+	DispatchRuleDirect     *DispatchDirectRule     `json:"dispatchRuleDirect",omitempty`
 	DispatchRuleIndividual *DispatchIndividualRule `json:"dispatchRuleIndividual",omitempty`
-	DispatchRuleCallee *DispatchCalleeRule `json:"dispatchRuleCallee",omitempty`
+	DispatchRuleCallee     *DispatchCalleeRule     `json:"dispatchRuleCallee",omitempty`
 }
 
 type SIPDispatchRule struct {
@@ -80,9 +80,9 @@ type SIPDispatchRule struct {
 	// Array of SIP Trunk IDs that are accepted for this rule. If empty all Trunks
 	TrunkIds []string `json:"trunk_ids"`
 	// Dispatch Rule will only accept a call made to these numbers (if set).
-	Numbers  []string `json:"numbers",omitempty`
+	Numbers []string `json:"numbers",omitempty`
 	// Dispatch Rule will only accept a call made from these numbers (if set).
-	InboundNumbers  []string `json:"inbound_numbers",omitempty`
+	InboundNumbers []string `json:"inbound_numbers",omitempty`
 	// If true hide the phone number when joining the LiveKit room
 	HidePhoneNumber bool `json:"hide_phone_number"`
 }

@@ -216,7 +216,7 @@ func (c *LiveKitClient) UpdateInboundSIPTrunk(info *proto.SIPInboundTrunkInfo) (
 		),
 		&proto.UpdateSIPInboundTrunkRequest{
 			SipTrunkId: info.SipTrunkId,
-			Action: &proto.UpdateSIPInboundTrunkRequest_Replace {
+			Action: &proto.UpdateSIPInboundTrunkRequest_Replace{
 				Replace: info,
 			},
 		})
@@ -236,7 +236,7 @@ func (c *LiveKitClient) UpdateOutboundSIPTrunk(info *proto.SIPOutboundTrunkInfo)
 		),
 		&proto.UpdateSIPOutboundTrunkRequest{
 			SipTrunkId: info.SipTrunkId,
-			Action: &proto.UpdateSIPOutboundTrunkRequest_Replace {
+			Action: &proto.UpdateSIPOutboundTrunkRequest_Replace{
 				Replace: info,
 			},
 		})
@@ -256,7 +256,7 @@ func (c *LiveKitClient) UpdateSIPDispatchRule(rule *proto.SIPDispatchRuleInfo) (
 		),
 		&proto.UpdateSIPDispatchRuleRequest{
 			SipDispatchRuleId: rule.SipDispatchRuleId,
-			Action: &proto.UpdateSIPDispatchRuleRequest_Replace {
+			Action: &proto.UpdateSIPDispatchRuleRequest_Replace{
 				Replace: rule,
 			},
 		})

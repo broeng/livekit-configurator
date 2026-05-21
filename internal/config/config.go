@@ -26,7 +26,7 @@ type Config struct {
 func LoadConfig(envPrefix string) (*Config, error) {
 	var config Config
 	if err := gonfig.Load(&config, gonfig.Conf{
-		EnvPrefix: envPrefix,
+		EnvPrefix:         envPrefix,
 		FlagIgnoreUnknown: false,
 	}); err != nil {
 		return nil, fmt.Errorf("could not parse options: %s", err)
