@@ -31,17 +31,19 @@ func LoadConfig(envPrefix string) (*Config, error) {
 	}); err != nil {
 		return nil, fmt.Errorf("could not parse options: %s", err)
 	}
-	if len(config.ConfigPath) == 0 {
-		return nil, fmt.Errorf("--config/%sCONFIG parameter missing", envPrefix)
-	}
-	if len(config.ServerUrl) == 0 {
-		return nil, fmt.Errorf("--server-url/%sSERVER_URL parameter missing", envPrefix)
-	}
-	if len(config.ApiKey) == 0 {
-		return nil, fmt.Errorf("--api-key/%sAPI_KEY parameter missing", envPrefix)
-	}
-	if len(config.ApiSecret) == 0 {
-		return nil, fmt.Errorf("--api-secret/%sAPI_SECRET parameter missing", envPrefix)
+	if !config.Version {
+		if len(config.ConfigPath) == 0 {
+			return nil, fmt.Errorf("--config/%sCONFIG parameter missing", envPrefix)
+		}
+		if len(config.ServerUrl) == 0 {
+			return nil, fmt.Errorf("--server-url/%sSERVER_URL parameter missing", envPrefix)
+		}
+		if len(config.ApiKey) == 0 {
+			return nil, fmt.Errorf("--api-key/%sAPI_KEY parameter missing", envPrefix)
+		}
+		if len(config.ApiSecret) == 0 {
+			return nil, fmt.Errorf("--api-secret/%sAPI_SECRET parameter missing", envPrefix)
+		}
 	}
 	return &config, nil
 }
